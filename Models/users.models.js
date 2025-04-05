@@ -1,7 +1,16 @@
-const users = [
-    { id: 1, name: 'Alice', email: 'alice@email.com' },
-    { id: 2, name: 'Bob', email: 'bob@email.com' },
-  ];
-  
-  export default users;
-  
+import { DataTypes } from "sequelize";
+import sequelize from "../Config/database.js";
+
+const User = sequelize.define('User', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    }
+});
+
+export default User
